@@ -45,6 +45,7 @@ def getDaily(headers, cur, con, client, pdl, pdl_config, mode="consumption", las
         f.publish(client, f"{pdl}/{mode}/current_year/error", str(0))
         for key, value in data.items():
             if key != "dateBegin" and key != "dateEnded":
+                f.log(value["value"])
                 current_value = int(value["value"])
                 current_date = value["date"]
                 current_date = datetime.strptime(current_date, '%Y-%m-%d')
